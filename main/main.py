@@ -6,8 +6,9 @@ from datetime import datetime
 import numpy as np
 import pickle
 
+
 # Cargar el conjunto de datos
-df = pd.read_csv(r'C:\Users\asdel\OneDrive\Documentos\Contenedor\bitcoin_mlops_proyecto\data\btc_historical_dataset.csv')
+df = pd.read_csv('main/btc_historical_dataset.csv')
 
 # Convertir la columna de fecha a tipo datetime y ordenar el dataframe por esta columna
 df['Date'] = pd.to_datetime(df['Date'])

@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copia los archivos del proyecto al directorio de trabajo
 COPY . /app
+COPY main/data /app/data
 
 # Instala las dependencias del proyecto
 RUN pip install -r requirements.txt
@@ -14,4 +15,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Comando para correr la aplicación
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "main/main.py"]
