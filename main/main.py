@@ -1,14 +1,14 @@
+import pickle
+from datetime import datetime
+
+import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-from datetime import datetime
-import numpy as np
-import pickle
-
+from sklearn.model_selection import train_test_split
 
 # Cargar el conjunto de datos
-df = pd.read_csv('main/btc_historical_dataset.csv')
+df= pd.read_csv('main/btc_historical_dataset.csv')
 
 # Convertir la columna de fecha a tipo datetime y ordenar el dataframe por esta columna
 df['Date'] = pd.to_datetime(df['Date'])
