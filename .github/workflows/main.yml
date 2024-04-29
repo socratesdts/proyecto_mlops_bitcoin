@@ -21,9 +21,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # El siguiente bloque de código asume que quieres construir y empujar tanto el tag 'dev' como el tag 'v1'.
-      # Si solo necesitas uno, elimina el bloque correspondiente al tag que no quieres.
-
       - name: Build docker image with dev tag
         run: docker build -t asdelgado506/project_bitcoin_predictor:dev .
 
@@ -35,3 +32,4 @@ jobs:
 
       - name: Docker push to Dockerhub with v1 tag
         run: docker push asdelgado506/project_bitcoin_predictor:v1
+
