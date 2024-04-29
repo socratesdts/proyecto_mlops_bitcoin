@@ -48,5 +48,3 @@ jobs:
                 
                 docker pull ${{ secrets.DOCKER_USERNAME }}/project_bitcoin_predictor:v1
                 docker run -d --name project_bitcoin_predictor -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/project_bitcoin_predictor:v1
-
-
