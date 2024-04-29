@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
-        run: docker build -t asdelgado506/project_bitcoin_predictor:dev .
+        run: docker build -t asdelgado506/project_bitcoin_predictor:v1 .
 
       - name: Docker push to Dockerhub
-        run: docker push asdelgado506/project_bitcoin_predictor:dev
+        run: docker push asdelgado506/project_bitcoin_predictor:v1
