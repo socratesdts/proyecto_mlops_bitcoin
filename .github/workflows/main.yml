@@ -33,20 +33,18 @@ jobs:
       - name: Docker push to Dockerhub with v1 tag
         run: docker push asdelgado506/project_bitcoin_predictor:v1
 
-          - name: Deploy to EC2
-            uses: appleboy/ssh-action@master
-            with:
-              host: ${{ secrets.EC2_HOST }}
-              username: ${{ secrets.EC2_USERNAME }}
-              key: ${{ secrets.EC2_PRIVATE_KEY }}
-              script: |
-                docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-                if docker ps | grep -q project_bitcoin_predictor; then
-                  docker stop project_bitcoin_predictor
-                  docker rm project_bitcoin_predictor
-                fi
-                
-                docker pull ${{ secrets.DOCKER_USERNAME }}/project_bitcoin_predictor:v1
-                docker run -d --name project_bitcoin_predictor -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/project_bitcoin_predictor:v1
-
-
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            if docker ps | grep -q project_bitcoin_predictor; then
+              docker stop project_bitcoin_predictor
+              docker rm project_bitcoin_predictor
+            fi
+            
+            docker pull asdelgado506/project_bitcoin_predictor:v1
+            docker run -d --name project_bitcoin_predictor -p 8000:8000 asdelgado506/project_bitcoin_predictor:v1
