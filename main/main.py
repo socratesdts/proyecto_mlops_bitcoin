@@ -27,5 +27,3 @@ if __name__ == '__main__':
     print(f"Aplicación corriendo en http://{host_ip}:8000")
     import uvicorn
     uvicorn.run(app, host='0.0.0.0', port=8000)
-
-
